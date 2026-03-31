@@ -1,17 +1,15 @@
 import React from 'react'
-import '../App.css'
-import '../css/Navigation.css'
 
 const Navigation = () => {
     return (
         <nav>
             <ul>
-                <li><h1>Bolt Bucket 🏎️</h1></li>
+                <li><h1 className='text-2xl font-bold'>Fit Builder </h1></li>
             </ul>
 
             <ul>
                 <li><a href='/' role='button'>Customize</a></li>
-                <li><a href='/customcars' role='button'>View Cars</a></li>
+                <li><a href='/outfits' role='button'>View Outfits</a></li>
             </ul>
             
         </nav>
