@@ -1,4 +1,4 @@
-import { pool } from './database.js'
+import { pool } from '../config/database.js'
 
 export const getAllItems = async (req, res) => {
    try {

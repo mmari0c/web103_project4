@@ -1,12 +1,12 @@
 import React from 'react'
 
-const ViewCars = () => {
+const ViewOutfit = () => {
     
     return (
         <div>
-            
+            <p>You're viewing your fits!</p>
         </div>
     )
 }
 
-export default ViewCars
+export default ViewOutfit

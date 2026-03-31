@@ -2,16 +2,13 @@ import React from 'react'
 
 const Navigation = () => {
     return (
-        <nav>
+        <nav className='flex justify-between items-center p-4 border-b-2 border-gray-100'>
             <ul>
-                <li><h1 className='text-2xl font-bold'>Fit Builder </h1></li>
+                <li><a href='/' role='button'><h1 className='text-2xl font-bold'>Fit Builder </h1></a></li>
             </ul>
-
             <ul>
-                <li><a href='/' role='button'>Customize</a></li>
-                <li><a href='/outfits' role='button'>View Outfits</a></li>
+                <li className='bg-gray-50 p-2 rounded-lg'><a href='/outfits' role='button'>View Fits</a></li>
             </ul>
-            
         </nav>
     )
 }

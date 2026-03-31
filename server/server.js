@@ -2,9 +2,8 @@ import express from 'express'
 import path from 'path'
 import favicon from 'serve-favicon'
 import dotenv from 'dotenv'
-
-// import the router from your routes file
-
+import itemsRouter from './routes/items.js'
+import customOutfitRouter from './routes/custom_outfit.js'
 
 dotenv.config()
 
@@ -14,6 +13,18 @@ const app = express()
 
 app.use(express.json())
 
+app.use((req, res, next) => {
+    res.header('Access-Control-Allow-Origin', 'http://localhost:5173')
+    res.header('Access-Control-Allow-Methods', 'GET,POST,PUT,DELETE,OPTIONS')
+    res.header('Access-Control-Allow-Headers', 'Content-Type, Authorization')
+
+    if (req.method === 'OPTIONS') {
+        return res.sendStatus(204)
+    }
+
+    next()
+})
+
 if (process.env.NODE_ENV === 'development') {
     app.use(favicon(path.resolve('../', 'client', 'public', 'lightning.png')))
 }
@@ -22,8 +33,8 @@ else if (process.env.NODE_ENV === 'production') {
     app.use(express.static('public'))
 }
 
-// specify the api path for the server to use
-
+app.use('/items', itemsRouter)
+// app.use('/', customOutfitRouter)
 
 if (process.env.NODE_ENV === 'production') {
     app.get('/*', (_, res) =>

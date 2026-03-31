@@ -1,12 +1,12 @@
 import React from 'react'
 
-const CarDetails = () => {
+const OutfitDetails = () => {
 
     return (
         <div>
-
+            <p>You're viewing a fit details!</p>
         </div>
     )
 }
 
-export default CarDetails
+export default OutfitDetails

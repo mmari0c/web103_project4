@@ -1,6 +1,9 @@
 import express from 'express'
-import { getItems, getItemsByCategory } from '../controllers/items.js'
+import { getAllItems, getItemByCategory } from '../controllers/items.js'
 
 const router = express.Router()
 
-router.get('/', getItems)
+router.get('/', getAllItems)
+router.get('/category/:categoryId', getItemByCategory)
+
+export default router
