@@ -1,7 +1,5 @@
 import { pool } from '../config/database.js'
 
-
-
 export const getOutfits = async (req, res) => {
    try {
       const selectQuery = `SELECT

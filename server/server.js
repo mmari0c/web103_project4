@@ -4,6 +4,7 @@ import favicon from 'serve-favicon'
 import dotenv from 'dotenv'
 import itemsRouter from './routes/items.js'
 import customOutfitRouter from './routes/custom_outfit.js'
+import categoriesRouter from './routes/categories.js'
 
 dotenv.config()
 
@@ -35,6 +36,7 @@ else if (process.env.NODE_ENV === 'production') {
 
 app.use('/items', itemsRouter)
 // app.use('/', customOutfitRouter)
+app.use('/categories', categoriesRouter)
 
 if (process.env.NODE_ENV === 'production') {
     app.get('/*', (_, res) =>
