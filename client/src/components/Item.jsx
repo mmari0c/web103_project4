@@ -1,31 +1,16 @@
 import React from 'react'
-import { useState, useEffect } from 'react'
 
 const Item = (props) => {
-   const [item, setItem] = useState({
-      name: '',
-      category_id: null,
-      style_tag: '',
-      price: null,
-      image: ''
-   })
-
-   useEffect( () => {
-      setItem({
-         name: props.name,
-         category_id: props.category_id,
-         style_tag: props.style_tag,
-         price: props.price,
-         image: props.image
-      })
-   }, [props])
-
    return (
-      <article className='w-65 min-w-50 flex-none'>
-         <img src={item.image} alt={item.name} className=' w-full border border-gray-300 p-2'/>
+      <article className='w-65 min-w-50 flex-none cursor-pointer' onClick={props.selectItem}>
+         <img
+            src={props.image}
+            alt={props.name}
+            className={`w-full border p-2 ${props.isSelected ? 'border-black' : 'border-gray-300'}`}
+         />
          <div className='mt-3'>
-            <h3 className='font-medium'>{item.name}</h3>
-            <p className='text-sm text-gray-600'>${item.price}</p>
+            <h3 className={props.isSelected ? 'font-bold' : 'font-medium'}>{props.name}</h3>
+            <p className='text-sm text-gray-600'>${props.price}</p>
          </div>
       </article>
    )

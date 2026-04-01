@@ -4,20 +4,25 @@ import Item from './Item'
 
 const Category = (props) => {
    const [items, setItems] = useState([])
+   const [selectedItem, setSelectedItem] = useState(null)
 
    useEffect(() => {
       const fetchItems = async () => {
          if (!props.category_id) return
 
-         console.log('Fetching items for category ID:', props.category_id)
          const response = await fetch(`http://localhost:3000/items/category/${props.category_id}`)
          const json = await response.json()
          setItems(json)
       }
-      console.log("Fetching item with category ID:", props.category_id)
       fetchItems()
       console.log('Items after fetch:', items)
    }, [props.category_id])
+
+   useEffect(() => {
+      if (!props.selectItem) return
+
+      props.selectItem(selectedItem)
+   }, [selectedItem, props.selectItem])
 
    return (
       <section className='mb-6'>
@@ -29,11 +34,14 @@ const Category = (props) => {
             {items.map((item) => (
                <Item
                   key={item.item_id}
+                  item_id={item.item_id}
                   name={item.name}
                   category_id={item.category_id}
                   style_tag={item.style_tag}
                   price={item.price}
                   image={item.image}
+                  isSelected={selectedItem?.item_id === item.item_id}
+                  selectItem={() => setSelectedItem(selectedItem?.item_id === item.item_id ? null : item)}
                />
             ))}
          </div>
