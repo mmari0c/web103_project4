@@ -1,8 +1,9 @@
 import express from 'express'
-import { getOutfits } from '../controllers/custom_outfit.js'
+import { getOutfits, createOutfit } from '../controllers/custom_outfit.js'
 
 const router = express.Router()
 
-router.get('/outfits', getOutfits)
+router.get('/', getOutfits)
+router.post('/', createOutfit)
 
 export default router

@@ -35,7 +35,7 @@ else if (process.env.NODE_ENV === 'production') {
 }
 
 app.use('/items', itemsRouter)
-// app.use('/', customOutfitRouter)
+app.use('/outfits', customOutfitRouter)
 app.use('/categories', categoriesRouter)
 
 if (process.env.NODE_ENV === 'production') {

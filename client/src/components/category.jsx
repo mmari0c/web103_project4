@@ -18,11 +18,15 @@ const Category = (props) => {
       console.log('Items after fetch:', items)
    }, [props.category_id])
 
-   useEffect(() => {
-      if (!props.selectItem) return
+   const handleSelectItem = (item) => {
+      const nextSelectedItem = selectedItem?.item_id === item.item_id ? null : item
 
-      props.selectItem(selectedItem)
-   }, [selectedItem, props.selectItem])
+      setSelectedItem(nextSelectedItem)
+
+      if (props.selectItem) {
+         props.selectItem(nextSelectedItem)
+      }
+   }
 
    return (
       <section className='mb-6'>
@@ -41,7 +45,7 @@ const Category = (props) => {
                   price={item.price}
                   image={item.image}
                   isSelected={selectedItem?.item_id === item.item_id}
-                  selectItem={() => setSelectedItem(selectedItem?.item_id === item.item_id ? null : item)}
+                  selectItem={() => handleSelectItem(item)}
                />
             ))}
          </div>

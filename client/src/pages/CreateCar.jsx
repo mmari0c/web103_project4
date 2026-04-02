@@ -34,6 +34,26 @@ const CreateOutfit = () => {
         console.log('Selected items:', selectedItems)
     }
 
+    const createOutfit = async (event) => {
+        const outfit = {
+            name: 'My Outfit',
+            top_id: selectedItems[1]?.item_id,
+            jacket_id: selectedItems[2]?.item_id,
+            bottom_id: selectedItems[3]?.item_id,
+            shoes_id: selectedItems[4]?.item_id,
+        }
+        event.preventDefault()
+        const options = {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json'
+        },
+        body: JSON.stringify(outfit),
+        }
+        const response = await fetch('http://localhost:3000/outfits', options) 
+        window.location = '/'
+    }
+
     return (
         <div className='flex min-h-screen flex-col gap-6 px-4 py-6 lg:flex-row lg:px-8'>
             <div className='w-full lg:w-2/3 lg:pr-6'>
@@ -52,6 +72,7 @@ const CreateOutfit = () => {
             <div className='w-full lg:w-1/3'>
                 <Mannequin
                     selectedItems={selectedItems}
+                    createOutfit={createOutfit}
                 />
             </div>
         </div>
