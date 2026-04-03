@@ -7,6 +7,9 @@
     "build": "cd client && vite build"
   },
   "dependencies": {
+    "@fortawesome/fontawesome-svg-core": "^7.2.0",
+    "@fortawesome/free-solid-svg-icons": "^7.2.0",
+    "@fortawesome/react-fontawesome": "^3.3.0",
     "@picocss/pico": "^1.5.7",
     "@tailwindcss/vite": "^4.2.2",
     "concurrently": "^7.6.0",

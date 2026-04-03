@@ -2,7 +2,7 @@ import React from 'react'
 
 const Item = (props) => {
    return (
-      <article className='w-65 min-w-50 flex-none cursor-pointer' onClick={props.selectItem}>
+      <article className='w-56 min-w-[14rem] flex-none cursor-pointer' onClick={props.selectItem}>
          <img
             src={props.image}
             alt={props.name}

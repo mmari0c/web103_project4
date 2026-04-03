@@ -7,7 +7,7 @@ const Navigation = () => {
                 <li><a href='/' role='button'><h1 className='text-2xl font-bold'>Fit Builder </h1></a></li>
             </ul>
             <ul>
-                <li className='border border-gray-500 p-2 rounded-lg'><a href='/outfits' role='button'>View Fits</a></li>
+                <li className='p-2 rounded-lg'><a href='/outfits' role='button'>View Fits</a></li>
             </ul>
         </nav>
     )

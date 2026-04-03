@@ -7,6 +7,7 @@ const CreateOutfit = () => {
 
     // const [items, setItems] = useState([])
     const [categories, setCategories] = useState([])
+    const [outfitName, setOutfitName] = useState('')
     const [selectedItems, setSelectedItems] = useState({
         1: null,
         2: null,
@@ -35,14 +36,14 @@ const CreateOutfit = () => {
     }
 
     const createOutfit = async (event) => {
+        event.preventDefault()
         const outfit = {
-            name: 'My Outfit',
+            name: outfitName || 'My Outfit',
             top_id: selectedItems[1]?.item_id,
             jacket_id: selectedItems[2]?.item_id,
             bottom_id: selectedItems[3]?.item_id,
             shoes_id: selectedItems[4]?.item_id,
         }
-        event.preventDefault()
         const options = {
         method: 'POST',
         headers: {
@@ -72,7 +73,9 @@ const CreateOutfit = () => {
             <div className='w-full lg:w-1/3'>
                 <Mannequin
                     selectedItems={selectedItems}
-                    createOutfit={createOutfit}
+                    outfitName={outfitName}
+                    setOutfitName={setOutfitName}
+                    onSave={createOutfit}
                 />
             </div>
         </div>

@@ -1,5 +1,6 @@
 import { useEffect, useState } from 'react'
 import Outfit from '../components/Outfit'
+import { Link } from 'react-router-dom'
 
 const ViewOutfit = () => {
    const [outfits, setOutfits] = useState([])
@@ -61,20 +62,22 @@ const ViewOutfit = () => {
                      }
 
                      return (
-                        <article key={outfit.outfit_id} className='w-[22rem] min-w-[22rem] flex-none'>
-                           <div className=' bg-white p-4'>
-                              <div className='mb-4 flex items-start justify-between gap-4'>
-                                 <div>
-                                    <h2 className='text-lg font-semibold text-gray-900'>{outfit.name}</h2>
+                        <Link to={`/outfits/${outfit.outfit_id}`}>
+                           <article key={outfit.outfit_id} className='w-[22rem] min-w-[22rem] flex-none border rounded-lg border-gray-200 bg-white'>
+                              <div className=' bg-white p-4'>
+                                 <div className='mb-4 flex items-start justify-between gap-4'>
+                                    <div>
+                                       <h2 className='text-lg font-semibold text-gray-900'>{outfit.name}</h2>
+                                    </div>
                                  </div>
+                                 <Outfit
+                                    slots={outfitSlots}
+                                    showSummary
+                                    summaryTitle='Included Pieces'
+                                 />
                               </div>
-                              <Outfit
-                                 slots={outfitSlots}
-                                 showSummary
-                                 summaryTitle='Included Pieces'
-                              />
-                           </div>
-                        </article>
+                           </article>
+                        </Link>
                      )
                   })}
                </div>

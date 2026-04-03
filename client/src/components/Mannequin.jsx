@@ -28,17 +28,23 @@ const Mannequin = (props) => {
    return (
       <aside className='sticky top-6 rounded-sm border border-gray-200 bg-white p-4 max-w-full'>
          <div className='mb-4'>
-            { selectedItems.length > 0 ? (
-               <div className='flex items-center justify-between gap-3'>
-                  <input type='text' placeholder='My Outfit' className=' p-2 rounded-md' />
-                  <button className='rounded bg-black px-4 py-2 text-sm font-medium text-white cursor-pointer' onClick={props.createOutfit}>
-                     Save Outfit
-                  </button>
-               </div>
-            ) : (
-               null
-            )
-            }
+            <div className='flex items-center justify-between gap-3'>
+               <input
+                  type='text'
+                  value={props.outfitName}
+                  onChange={(event) => props.setOutfitName(event.target.value)}
+                  placeholder='My Outfit'
+                  className='w-fit rounded-md border border-gray-300 p-2 outline-none focus:border-black'
+               />
+               <button
+                  type='button'
+                  className='cursor-pointer rounded bg-black px-2 py-2 text-sm font-medium text-white disabled:cursor-not-allowed disabled:opacity-60'
+                  onClick={props.onSave}
+                  disabled={props.isSaving || selectedItems.length === 0}
+               >
+                  {props.saveLabel || 'Save Outfit'}
+               </button>
+            </div>
          </div>
          <Outfit slots={outfitSlots} showSummary summaryTitle='Selected Pieces' />
       </aside>
